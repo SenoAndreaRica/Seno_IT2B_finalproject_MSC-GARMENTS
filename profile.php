@@ -1,21 +1,18 @@
 <?php
 session_start();
-if (isset($_SESSION["uid"])) {
-    header("location:profile.php");
+if (!isset($_SESSION["uid"])) {
+    header("location:index.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="images/icon.png" type="image/x-icon"/>
-        <title>Home | MSC-GARMENTS</title>
+        <title>MSC-GARMENTS | <?php echo "Hello  " . $_SESSION["name"]; ?></title>
         <?php
         include 'cssfile.php';
         ?>
-
         <style>
             @media screen and (max-width:480px){
                 #search{width:80%;}
@@ -24,21 +21,18 @@ if (isset($_SESSION["uid"])) {
         </style>
     </head>
     <body>
- <div id="loader-wrapper">
+        <div id="loader-wrapper">
             <div id="loader"></div>
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
         </div>
-
-        <!--header-->
-        <header id="header">
-            <!--header_top-->
-            <div class="header_top navbar-fixed-top">
+        <header id="header"><!--header-->
+            <div class="header_top navbar-fixed-top"><!--header_top-->
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 ">
                             <div class="contactinfo">
-                             <ul class="nav nav-pills">
+                                <ul class="nav nav-pills">
                                     <li><a href="index.php"><i class="fa fa-home"></i> MSC-GARMENTS</a></li>
                                     <li><a href="tel:+84123456789"><i class="fa fa-phone"></i> 09813757730</a></li>
                                     <li><a href="mailto:ahkk9866@gmail.com"><i class="fa fa-envelope"></i> mscgarments@gmail.com</a></li>
@@ -47,14 +41,17 @@ if (isset($_SESSION["uid"])) {
                         </div>
                         <div class="col-sm-6">
                             <div class="social-icons pull-right">
-                               <ul class="nav navbar-nav">
+                                <ul class="nav navbar-nav">
                                       <li><a href="https://www.facebook.com/marinduquestatecollege/"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="https://www.facebook.com/marinduquestatecollege/"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="https://www.facebook.com/marinduquestatecollege/"><i class="fa fa-linkedin"></i></a></li>
                                     <li><a href="https://www.facebook.com/marinduquestatecollege/"><i class="fa fa-dribbble"></i></a></li>
                                     <li><a href="https://www.facebook.com/marinduquestatecollege/"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a style="height: 37px;" href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown">
 
+                       
+
+
+                                    <li><a style="height: 37px;" href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown">
                                             <span class="glyphicon glyphicon-shopping-cart function_for_user_span">
                                             </span>Cart<span class="badge"> 0</span></a>
                                         <div class="dropdown-menu function_for_user" style="width:500px; margin-left: -540px">
@@ -65,6 +62,7 @@ if (isset($_SESSION["uid"])) {
                                                         <div class="col-md-3 col-xs-3">Items</div>
                                                         <div class="col-md-3 col-xs-3">Product name</div>
                                                         <div class="col-md-3 col-xs-3">Price</div>
+                                                    </div>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div id="cart_product">
@@ -73,37 +71,34 @@ if (isset($_SESSION["uid"])) {
                                                                 <div class="col-md-3">Product Image</div>
                                                                 <div class="col-md-3">Product Name</div>
                                                                 <div class="col-md-3">Price in PHP .</div>
-                                                        </div>
-                                                        
+                                                        </div>-->
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="panel-footer"></div>
                                             </div>
                                         </div>
-
                                     </li>
                                     <li>&nbsp</li>
-                                    <li class="">
-                                        <a href="#" class=" dropdown-toggle function_for_user" data-toggle="dropdown" >
-                                            <span class=" glyphicon glyphicon-user function_for_user_span"></span> LogIn
+                                    <li>
+                                        <a style="height: 37px;" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user function_for_user_span"></span><?php echo " Hello, " . $_SESSION["name"]; ?>
                                         </a>
-                                        <ul class="dropdown-menu loginup">
-                                            <div style="width:300px;">
-                                                <div class="panel panel-primary">
-                                                    <h2 class="center">LogIn</h2> 
-                                                    <div id="" class="panel-heading">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" class="form-control" onclick="focus(this)" placeholder="Email" id="email" required/>  <!-- required: Make the user enter and then click submit-->
-                                                        <label for="email">Password</label>
-                                                        <input type="password" class="form-control"  placeholder="Password" id="password" required/>
-                                                        <p><br/></p>
-                                                        <h6><a class="register" href="customer_registration.php"><i>Sign up for a new account</i></a></h6>
-                                                        <input type="submit" class="btn btn-success" style="float:right;" id="login" value="LogIn">
-                                                    </div>
-                                                    <div style="height: 65px;" class="panel-footer" id="e_msg"></div>
-                                                </div>
-                                            </div>
+                                        <ul style="height: 85px;" class="dropdown-menu">
+                                            <li>
+                                                <a href="cart.php" style="font-size: 17px; text-decoration:none; color:green;">
+                                                    <span class="fa fa-archive"> Cart
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#popup1" style="font-size: 17px; text-decoration:none; color:green;">
+                                                    <span class="fa fa-refresh"> Change password
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php" style="font-size: 17px; text-decoration:none; color:green;">
+                                                    <span class="fa fa-reply"> Sign Out
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -123,13 +118,16 @@ if (isset($_SESSION["uid"])) {
                                 <a href="index.php"><img alt="" src="images/logoheader.png"></a>
                             </div>
                         </div>
-                        <div class="col-sm-8">
-                            <div class="shop-menu pull-right">
-                                <ul class="nav navbar-nav">
+                        <div class="col-sm-6">
+                                        <div class="shop-menu pull-right">
+                                                            <ul class="nav navbar-nav">
+                            
+                            
+                                                            </ul>
+                                                        </div>
+                        </div>
+                        <div class="col-sm-2">
 
-
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,8 +145,8 @@ if (isset($_SESSION["uid"])) {
                                     <span class="icon-bar"></span>
                                 </button>
                             </div>
-                            <div class=" mainmenu pull-left">
-                              <ul class="nav navbar-nav collapse navbar-collapse">
+                          <div class=" mainmenu pull-left">
+                               <ul class="nav navbar-nav collapse navbar-collapse">
                                     <li class="menuhover"><a  href="index.php">Home</a></li>
                                     <li class="menuhover"><a href="">About</a></li>
                                     <li class="menuhover"><a href="">Preview</a></li>
@@ -165,106 +163,108 @@ if (isset($_SESSION["uid"])) {
                                 <input type="text" class="form-control" id="search" >
                             </div>
                             <div>
-                                <input  type="button" class="btn btn-primary" id="search_btn" value="Search">
+                                <input type="button" class="btn btn-primary" id="search_btn" value="Search">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <section></section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-xs-12">
-                    <div id="get_category" style="border: 0.1px solid #38761d;">
+        <section>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3 col-xs-12">
+                        <div id="get_category" style="border: 0.1px solid #38761d;">
+                        </div>
+                        <!--<div class="nav nav-pills nav-stacked">
+                                <li class="active"><a href="#"><h4>Categories</h4></a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                        </div> -->
+                        <div id="get_brand" style="border: 0.1px solid #38761d;">
+                        </div>
+                        <!--<div class="nav nav-pills nav-stacked">
+                                <li class="active"><a href="#"><h4>Brand</h4></a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                                <li><a href="#">Categories</a></li>
+                        </div> -->
                     </div>
-                    <!--<div class="nav nav-pills nav-stacked">
-                            <li class="active"><a href="#"><h4>Categories</h4></a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                    </div> -->
-                    <div id="get_brand" style="border: 0.1px solid #38761d;">
-                    </div>
-                                        <!--<div class="nav nav-pills nav-stacked">
-                            <li class="active"><a href="#"><h4>Brand</h4></a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Categories</a></li>
-                    </div> -->
-                 
-                                        </div>
-                <div class="col-md-9 col-xs-12">
-                    <div class="row">
+                    <div class="col-md-9 col-xs-12">	
+                        <div class="row">
+                            <div style="position: fixed;
+                                 margin-left: 833px;
+                                 margin-top: -196px;
+                                 z-index: 9999;" class="col-md-2 col-xs-2" id="product_msg">
+                            </div>
+                        </div>
+                        <div class="row">
                         <h2 class="title text-center">MSC-GARMENTS</h2>
                         <div class="col-md-12 col-xs-12">
 
                             <div id="wrap-slider" style="height: 350px; width: 847px;">
                                 <div id="slider">
-<?php include 'Slider.php'; ?>
+                                    <?php include 'Slider.php'; ?>
                                 </div><!-- end #slider -->
                             </div><!-- end #wrap-slider  -->
                             <span id="prev-slide">Previous</span><span id="next-slide">Next</span>
                         </div>
                     </div>      
                     <br><br>
-
-                    <div class="row">
-                        <h2 class="title text-center">Product</h2>
-                        <div style="position: fixed;
-                             float: right;
-                             margin-left: 834px;
-                             margin-top: -685px;" class="col-md-2 col-xs-2" id="product_msg">
-                        </div>
-                    </div> 
-                    <div class="panel panel-info">
-                        <!--                        <div class="panel-heading">Products</div>-->
-                        <div class="panel-body">
-                            <div id="get_product" >
+                        <div class="panel panel-info" id="scroll">
+                            <div class="panel-heading">Products</div>
+                            <div class="panel-body">
+                                <div id="get_product">
+                                    <!--Here we get product jquery Ajax Request-->
+                                </div>
+                                <div class="col-md-4">
+                                        <div class="panel panel-info">
+                                                
+                                        </div>
+                                </div>
                             </div>
-                            <!--                            <div class="col-md-4">
-                                                            <div class="panel panel-info">
-                                                                <div class="panel-body">
-                                                                    <img style="width: 210px; height:185px;" src="product_images/3PGVwy_simg_b5529c_250x250_maxb.jpg"/>
-                                                                </div>
-                                                                <h3 class="center lightyellow">Giá: 50000 VND</h3>
-                                                                <h4 class="center">Sản phẩm 1</h4>
-                                                                <div style="padding-bottom: 15px;">
-                                                                    <button class="" style="margin-left: 56px;
-                                                                            border-radius: 7px;
-                                                                            width: 110px;
-                                                                            height: 36px;">Buy Now
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
+                            <div class="panel-footer">Products offered by MSC-GARMENTS</div>
                         </div>
-                        <div class="panel-footer">&copy; 2023</div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <ul class="pagination" id="pageno">
+                                <li><a href="#">1</a></li>
+                            </ul>
+                        </center>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
+            </div>
+        </section>
+        <?php include 'footer.php'; ?>
+        <div id="popup1" class="overlay">
+            <div class="popup_changepassword">
+                <h2>Change password</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <form method="POST">
+                        <label for="">Old password</label>
+                        <input type="password" class="form-control" placeholder="Enter the old password" id="oldpass" name="oldpass" required/>
+                        <label for="">New password</label>
+                        <input type="password" class="form-control" placeholder="Enter the new password" id="newpass" name="newpass" required/>
+                        <label for="">Re-enter the new password</label>
+                        <input type="password" class="form-control" placeholder="Re-enter the new password" id="retypenewpass" name="retypenewpass" required/>
+                        <p><br/></p>
+                        <div id="changepass_message"></div>
+                        <input type="button" class="btn btn-success" style="float:right;" id="change" name="change" value="Change password">
+                    </form>
+                </div>
             </div>
         </div>
-    </section>
-<?php include 'footer.php'; ?>
-    
-    <?php
-    include 'jsfile.php';
-    ?>
-    <script type="text/javascript">
-        function Focus(object) {
-            object.value = "Test";
-        }
-
-        function Blur(object) {
-            if (object.value == "")
-                object.value = "Enter keywords";
-        }
-    </script>
-
-</body>
+        <?php include 'jsfile.php'; ?>
+    </body>
 </html>
 
 
